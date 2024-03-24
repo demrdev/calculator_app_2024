@@ -12,11 +12,23 @@ class CalculatorScreen extends StatefulWidget {
 
 class _CalculatorScreenState extends State<CalculatorScreen> {
   final CalculatorModel _calculatorModel = CalculatorModel();
+  late final List<void Function()> buttonActions;
+
+  @override
+  void initState() {
+    super.initState();
+    buttonActions = List.generate(
+      CalculatorTexts.buttonTexts.length,
+      (index) => () => _buttonPressed(CalculatorTexts.buttonTexts[index]),
+    );
+  }
 
   void _buttonPressed(String buttonText) {
     setState(() {
       if (buttonText == 'C') {
         _calculatorModel.clearExpression();
+      } else if (buttonText == '=') {
+        _evaluate();
       } else {
         _calculatorModel.setExpression(_calculatorModel.expression + buttonText);
       }
@@ -31,11 +43,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final buttonActions = List.generate(
-      CalculatorTexts.buttonTexts.length,
-      (index) => () => _buttonPressed(CalculatorTexts.buttonTexts[index]),
-    );
-
     return Scaffold(
       appBar: AppBar(
         title: Text('İleri Seviye Hesap Makinesi'),
@@ -44,7 +51,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         child: Column(
           children: [
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 alignment: Alignment.bottomRight,
                 padding: EdgeInsets.all(16.0),
@@ -55,21 +62,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ),
             ),
             Expanded(
-              flex: 6,
+              flex: 8,
               child: ButtonLayout(
                 buttonTexts: CalculatorTexts.buttonTexts,
                 buttonColors: CalculatorColors.buttonColors,
                 buttonActions: buttonActions,
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                padding: EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: _evaluate,
-                  child: Text(CalculatorTexts.equalButtonText),
-                ),
               ),
             ),
           ],

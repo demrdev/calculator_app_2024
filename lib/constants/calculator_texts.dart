@@ -24,7 +24,6 @@ class CalculatorTexts {
     '.',
     'C',
     '+',
+    '=',
   ];
-
-  static const equalButtonText = '=';
 }

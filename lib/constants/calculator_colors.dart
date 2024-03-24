@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CalculatorColors {
   static const List<Color> buttonColors = [
-    Colors.blue,
-    Colors.blue,
-    Colors.blue,
-    Colors.blue,
+    Colors.brown,
+    Colors.brown,
+    Colors.brown,
+    Colors.brown,
     Colors.black,
     Colors.black,
     Colors.black,
@@ -26,5 +26,6 @@ class CalculatorColors {
     Colors.black,
     Colors.red,
     Colors.orange,
+    Colors.green
   ];
 }

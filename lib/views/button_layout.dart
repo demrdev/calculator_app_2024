@@ -18,7 +18,7 @@ class ButtonLayout extends StatelessWidget {
       itemCount: buttonTexts.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,
-        childAspectRatio: MediaQuery.of(context).size.aspectRatio * 2.2,
+        childAspectRatio: MediaQuery.of(context).size.aspectRatio * 2.5,
       ),
       itemBuilder: (context, index) {
         return CalculatorButton(
